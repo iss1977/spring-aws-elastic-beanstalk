@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My first Thymeleaf Page</title>
+
+    <!-- CSS -->
+    <link th:href="@{/css/main.css}" rel="stylesheet"></link>
+    <!-- JS -->
+    <script th:src="@{/js/actions.js}" type="text/javascript"></script>
+
+</head>
+<body>
+    <h1 th:text="'Hello, ' + ${myattr_id} + '!'">MY H1 Text</h1>
+
+
+
+    <tr th:each="dataItem, iterstat: ${data}">
+        <td th:text="${#numbers.formatInteger(dataItem.studentId,5)}" th:id="|td${iterstat.index}|"></td>
+        <td th:text="${dataItem.getStudentName()}"></td>
+        <td th:text="${this}"></td>
+        <button th:text="${iterstat.index}"></button>
+    </tr>
+
+
+    <H2>Student list</H2>
+
+    <button type="button" th:onclick="showAlert()">Show Alert</button>
+
+</body>
+</html>
